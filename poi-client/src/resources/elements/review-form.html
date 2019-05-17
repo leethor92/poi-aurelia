@@ -1,0 +1,12 @@
+<template>
+  <form submit.trigger="addReview()" class="ui form stacked segment">
+    <h3 class='ui dividing header'>Review's</h3>
+    <div class="field">
+      <label>Review Name</label> <input type="text" value.bind="reviewName">
+    </div>
+    <div class="field">
+      <label>Review Details</label> <input type="text" value.bind="reviewDetails">
+    </div>
+    <button class="ui blue submit button">Add Review</button>
+  </form>
+</template>
