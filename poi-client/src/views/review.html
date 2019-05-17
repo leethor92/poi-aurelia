@@ -1,33 +1,12 @@
 <template>
+  <require from="../resources/elements/review-form"></require>
+  <require from="../resources/elements/review-list"></require>
   <div class="ui stackable two column grid">
     <div class="column">
-      <form submit.trigger="addReview()" class="ui form stacked segment">
-        <h3 class='ui dividing header'>Review's</h3>
-        <div class="field">
-          <label>Review Name</label> <input type="text" value.bind="reviewName">
-        </div>
-        <div class="field">
-          <label>Description</label> <input type="text" value.bind="reviewDetails">
-        </div>
-        <button class="ui blue submit button">Add Review</button>
-      </form>
+      <review-form reviews.bind="reviews"></review-form>
     </div>
     <div class="column">
-      <h3 class="ui dividing header"> Reviews</h3>
-      <table class="ui celled table segment">
-        <thead>
-        <tr>
-          <th>Review Name</th>
-          <th>Review Details</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr repeat.for="review of reviews">
-          <td> ${review.reviewName}</td>
-          <td> ${review.reviewDetails}</td>
-        </tr>
-        </tbody>
-      </table>
+     <review-list reviews.bind="reviews"></review-list>
     </div>
   </div>
 </template>

@@ -1,6 +1,7 @@
 import { bindable } from 'aurelia-framework';
+import { Review } from '../../services/point-types';
 
-export class ReviewsList {
+export class ReviewList {
   @bindable
-  reviews : any[];
+  reviews : Review[];
 }

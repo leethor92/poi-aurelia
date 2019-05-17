@@ -1,0 +1,17 @@
+<template>
+  <h3 class="ui dividing header">Reviews</h3>
+  <table class="ui celled table segment">
+    <thead>
+    <tr>
+      <th>Review Name</th>
+      <th>Review Details</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr repeat.for="review of reviews">
+      <td> ${review.reviewName}</td>
+      <td> ${review.reviewDetails}</td>
+    </tr>
+    </tbody>
+  </table>
+</template>
