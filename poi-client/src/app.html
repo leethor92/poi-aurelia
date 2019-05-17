@@ -1,44 +1,12 @@
 <template>
+  <require from="views/points"></require>
+
   <div class="ui container">
     <section class="ui raised segment">
-      <h3 class="ui header"> Island </h3>
+      <h3 class="ui header"> Points </h3>
     </section>
     <div class="ui basic segment">
-      <div class="ui stackable two column grid">
-        <div class="column">
-          <form submit.trigger="addPoint()" class="ui form stacked segment">
-            <h3 class="ui dividing header"> Add an Island </h3>
-            <div class="field">
-              <label>Island Name </label> <input value.bind="pointName">
-            </div>
-            <div class="field">
-              <label>Island Details </label> <input value.bind="pointDetails">
-            </div>
-            <button class="ui blue submit button">Add</button>
-          </form>
-        </div>
-        <div class="column">
-          <h4 class="ui dividing header"> Islands </h4>
-          <table class="ui celled table segment">
-            <thead>
-            <tr>
-              <th>Island Name</th>
-              <th>Island Details</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr repeat.for="point of points">
-              <td>
-                ${point.pointName}
-              </td>
-              <td>
-                ${point.pointDetails}
-              </td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+      <points></points>
     </div>
   </div>
 </template>
