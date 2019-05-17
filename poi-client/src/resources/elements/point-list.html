@@ -1,0 +1,20 @@
+<template>
+  <h4 class="ui dividing header"> Points </h4>
+  <table class="ui celled table segment">
+    <thead>
+    <tr>
+      <th>island Name</th>
+      <th>Island Details</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr repeat.for="point of points">
+      <td>
+        ${point.pointName}
+      <td>
+        ${point.pointDetails}
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</template>
