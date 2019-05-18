@@ -15,6 +15,15 @@
         </div>
       </div>
     </div>
+    <h4 class="ui dividing header"> Select an Island </h4>
+    <div class="grouped inline fields">
+      <div class="field" repeat.for="point of points">
+        <div class="ui radio checkbox">
+          <input type="radio" model.bind="point" checked.bind="selectedPoint">
+          <label>${point.pointName}</label>
+        </div>
+      </div>
+    </div>
     <button class="ui blue submit button">Add Review</button>
   </form>
 </template>

@@ -7,4 +7,5 @@ export interface Review {
   reviewName: string;
   reviewDetails: string;
   rating: string;
+  point: Point;
 }
