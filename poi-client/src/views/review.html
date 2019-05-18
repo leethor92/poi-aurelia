@@ -1,9 +1,13 @@
 <template>
   <require from="../resources/elements/review-form"></require>
   <require from="../resources/elements/review-list"></require>
+
   <div class="ui stackable two column grid">
     <div class="column">
-      <review-form reviews.bind="reviews"></review-form>
+      <review-form reviews.two-way="reviews" rating-types.bind="ratingTypes"
+                                              points.bind="points">
+
+      </review-form>
     </div>
     <div class="column">
      <review-list reviews.bind="reviews"></review-list>

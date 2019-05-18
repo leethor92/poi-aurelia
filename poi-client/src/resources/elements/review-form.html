@@ -7,6 +7,23 @@
     <div class="field">
       <label>Review Details</label> <input type="text" value.bind="reviewDetails">
     </div>
+    <div class="grouped inline fields">
+      <div class="field" repeat.for="rating of ratingTypes">
+        <div class="ui radio checkbox">
+          <input type="radio" model.bind="rating" checked.bind="selectedType">
+          <label>${rating}</label>
+        </div>
+      </div>
+    </div>
+    <h4 class="ui dividing header"> Select an Island </h4>
+    <div class="grouped inline fields">
+      <div class="field" repeat.for="point of points">
+        <div class="ui radio checkbox">
+          <input type="radio" model.bind="point" checked.bind="selectedPoint">
+          <label>${point.pointName}</label>
+        </div>
+      </div>
+    </div>
     <button class="ui blue submit button">Add Review</button>
   </form>
 </template>
