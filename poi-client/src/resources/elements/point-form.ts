@@ -6,13 +6,18 @@ export class PointForm {
   pointDetails: string;
   @bindable
   points: Point[];
+  @bindable
+  categoryTypes: string[];
+
+  selectedCategory = '';
 
   addPoint() {
     const point = {
       pointName: this.pointName,
       pointDetails: this.pointDetails,
+      category: this.selectedCategory
     };
     this.points.push(point);
-    console.log(point);
+    console.log(this.points);
   }
 }
