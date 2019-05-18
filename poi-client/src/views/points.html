@@ -1,0 +1,13 @@
+<template>
+  <require from="../resources/elements/point-list"></require>
+  <require from="../resources/elements/point-form"></require>
+
+  <div class="ui stackable two column grid">
+    <div class="column">
+      <point-form points.bind="points"></point-form>
+    </div>
+    <div class="column">
+      <point-list points.bind="points"></point-list>
+    </div>
+  </div>
+</template>
