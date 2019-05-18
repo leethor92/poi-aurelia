@@ -6,13 +6,18 @@ export class ReviewForm {
   reviewDetails: string;
   @bindable
   reviews: Review[];
+  @bindable
+  ratingTypes: string [];
+
+  selectedType = '';
 
   addReview() {
     const review = {
       reviewName: this.reviewName,
-      reviewDetails: this.reviewDetails
+      reviewDetails: this.reviewDetails,
+      rating: this.selectedType
     }
     this.reviews.push(review);
-    console.log(review);
+    console.log(this.reviews);
   }
 }
