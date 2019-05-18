@@ -1,5 +1,5 @@
 export class Review {
-  reviews: any [] = [];
+  reviews: Review [] = [];
 }
 
 
