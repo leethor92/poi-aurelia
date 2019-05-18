@@ -1,5 +1,7 @@
-import {Point} from "./point-types";
+import {Point, Review} from "./point-types";
 
 export class PointService {
-  points : Point[] = []
+  points : Point[] = [];
+  reviews: Review [] = [];
+  ratingTypes = ['Bad','Ok','Good'];
 }
