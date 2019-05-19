@@ -16,20 +16,20 @@ export class PointService {
 
   constructor(private httpClient: HttpClient, private au: Aurelia, private router: Router, private ea: EventAggregator) {
     httpClient.configure(http => {
-      http.withBaseUrl('http://localhost:8080');
+      http.withBaseUrl('https://DESKTOP-TMDJO97:3000');
     });
     this.getPoints();
     this.getUsers();
   }
 
   async getPoints() {
-    const response = await this.httpClient.get('/api/points.json');
+    const response = await this.httpClient.get('/api/points');
     this.points = await response.content;
     console.log (this.points);
   }
 
   async getUsers() {
-    const response = await this.httpClient.get('/api/users.json');
+    const response = await this.httpClient.get('/api/users');
     const users = await response.content;
     users.forEach(user => {
       this.users.set(user.email, user);
@@ -47,7 +47,7 @@ export class PointService {
   }
 
   signup(firstName: string, lastName: string, email: string, password: string) {
-    //this.changeRouter(PLATFORM.moduleName('app'))
+    this.changeRouter(PLATFORM.moduleName('app'))
     return false;
   }
 

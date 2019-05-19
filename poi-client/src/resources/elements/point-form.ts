@@ -2,8 +2,8 @@ import { bindable } from 'aurelia-framework';
 import { Point } from '../../services/point-types';
 
 export class PointForm {
-  pointName: string;
-  pointDetails: string;
+  name: string;
+  details: string;
   @bindable
   points: Point[];
   @bindable
@@ -13,8 +13,8 @@ export class PointForm {
 
   addPoint() {
     const point = {
-      pointName: this.pointName,
-      pointDetails: this.pointDetails,
+      name: this.name,
+      details: this.details,
       category: this.selectedCategory
     };
     this.points.push(point);

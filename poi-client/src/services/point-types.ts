@@ -1,6 +1,6 @@
 export interface Point {
-  pointName: string;
-  pointDetails: string;
+  name: string;
+  details: string;
   category: string;
 }
 
