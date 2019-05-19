@@ -1,6 +1,9 @@
 import { bindable } from 'aurelia-framework';
 import { Point } from '../../services/point-types';
+import { inject, Aurelia } from 'aurelia-framework';
+import { PointService } from '../../services/point-service';
 
+@inject(PointService)
 export class PointForm {
   name: string;
   details: string;
@@ -11,13 +14,9 @@ export class PointForm {
 
   selectedCategory = '';
 
+  constructor(private ds: PointService) {}
+
   addPoint() {
-    const point = {
-      name: this.name,
-      details: this.details,
-      category: this.selectedCategory
-    };
-    this.points.push(point);
-    console.log(this.points);
+    this.ds.createPoint(this.name, this.details, this.selectedCategory);
   }
 }

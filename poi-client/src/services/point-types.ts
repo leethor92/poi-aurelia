@@ -2,6 +2,7 @@ export interface Point {
   name: string;
   details: string;
   category: string;
+  id: ''
 }
 
 export interface Review {

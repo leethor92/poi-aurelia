@@ -36,6 +36,17 @@ export class PointService {
     });
   }
 
+  async createPoint(name: string, details: string, category: string) {
+    const point = {
+      name: name,
+      details: details,
+      category: category
+    };
+    const response = await this.httpClient.post('/api/points', point);
+    const newPoint = await response.content;
+    this.points.push(newPoint);
+  }
+
   async review(reviewName: string, reviewDetails: string, rating: string, point: Point) {
     const review = {
       reviewName: reviewName,
