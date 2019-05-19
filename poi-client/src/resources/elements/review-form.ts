@@ -1,6 +1,9 @@
 import { bindable } from 'aurelia-framework';
 import { Review, Point } from '../../services/point-types';
+import { inject } from 'aurelia-framework';
+import {PointService} from "../../services/point-service";
 
+@inject(PointService)
 export class ReviewForm {
   reviewName: string;
   reviewDetails: string;
@@ -15,14 +18,9 @@ export class ReviewForm {
   selectedType = '';
   selectedPoint: Point = null;
 
+  constructor (private ds: PointService) {}
+
   addReview() {
-    const review = {
-      reviewName: this.reviewName,
-      reviewDetails: this.reviewDetails,
-      rating: this.selectedType,
-      point: this.selectedPoint
-    }
-    this.reviews.push(review);
-    console.log(this.reviews);
+    this.ds.review(this.reviewName, this.reviewDetails, this.selectedType, this.selectedPoint)
   }
 }

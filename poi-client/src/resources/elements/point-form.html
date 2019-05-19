@@ -7,6 +7,14 @@
     <div class="field">
       <label>Point Details </label> <input value.bind="pointDetails">
     </div>
+    <div class="grouped inline fields">
+      <div class="field" repeat.for="category of categoryTypes">
+        <div class="ui radio checkbox">
+          <input type="radio" model.bind="category" checked.bind="selectedCategory">
+          <label>${category}</label>
+        </div>
+      </div>
+    </div>
     <button class="ui blue submit button">Add</button>
   </form>
 </template>
