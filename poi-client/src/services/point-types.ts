@@ -10,3 +10,10 @@ export interface Review {
   rating: string;
   point: Point;
 }
+
+export interface User {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+}
