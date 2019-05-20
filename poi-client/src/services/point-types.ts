@@ -1,7 +1,10 @@
 export interface Point {
-  pointName: string;
-  pointDetails: string;
+  name: string;
+  details: string;
+  member: string;
   category: string;
+  location: Location;
+  id: ''
 }
 
 export interface Review {
@@ -16,4 +19,10 @@ export interface User {
   lastName: string;
   email: string;
   password: string;
+  _id: string;
+}
+
+export interface Location {
+  lat: number;
+  lng: number;
 }
