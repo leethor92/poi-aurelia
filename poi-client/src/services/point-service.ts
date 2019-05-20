@@ -1,9 +1,10 @@
-import {Point, Review, User} from "./point-types";
+import {Point, Review, User, Location} from "./point-types";
 import { HttpClient } from 'aurelia-http-client';
 import { inject, Aurelia } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
 import { PLATFORM } from 'aurelia-pal';
 import { EventAggregator } from 'aurelia-event-aggregator';
+import {UpdateMap} from "./messages";
 
 
 @inject(HttpClient, Aurelia, Router, EventAggregator)
@@ -13,6 +14,8 @@ export class PointService {
   categoryTypes = ['North','South','East','West'];
   reviews: Review [] = [];
   ratingTypes = ['Bad','Ok','Good'];
+
+  usersById: Map<string, User> = new Map();
 
   constructor(private httpClient: HttpClient, private au: Aurelia, private router: Router, private ea: EventAggregator) {
     httpClient.configure(http => {
@@ -33,18 +36,21 @@ export class PointService {
     const users = await response.content;
     users.forEach(user => {
       this.users.set(user.email, user);
+      this.usersById.set(user._id, user);
     });
   }
 
-  async createPoint(name: string, details: string, category: string) {
+  async createPoint(name: string, details: string, category: string, location: Location) {
     const point = {
       name: name,
       details: details,
-      category: category
+      category: category,
+      location: Location
     };
     const response = await this.httpClient.post('/api/points', point);
     const newPoint = await response.content;
     this.points.push(newPoint);
+    this.ea.publish(new UpdateMap(newPoint));
   }
 
   async review(reviewName: string, reviewDetails: string, rating: string, point: Point) {
@@ -57,7 +63,17 @@ export class PointService {
     this.reviews.push(review);
   }
 
-  signup(firstName: string, lastName: string, email: string, password: string) {
+  async signup(firstName: string, lastName: string, email: string, password: string) {
+    const user = {
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      password: password
+    };
+    const response = await this.httpClient.post('/api/users', user);
+    const newUser = await response.content;
+    this.users.set(newUser.email, newUser);
+    this.usersById.set(newUser._id, newUser);
     this.changeRouter(PLATFORM.moduleName('app'))
     return false;
   }

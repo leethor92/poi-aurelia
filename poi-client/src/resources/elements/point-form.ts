@@ -1,5 +1,5 @@
 import { bindable } from 'aurelia-framework';
-import { Point } from '../../services/point-types';
+import { Point, Location } from '../../services/point-types';
 import { inject, Aurelia } from 'aurelia-framework';
 import { PointService } from '../../services/point-service';
 
@@ -14,9 +14,11 @@ export class PointForm {
 
   selectedCategory = '';
 
+  location: Location = { lat: 53.2734, lng: -7.7783203 };
+
   constructor(private ds: PointService) {}
 
   addPoint() {
-    this.ds.createPoint(this.name, this.details, this.selectedCategory);
+    this.ds.createPoint(this.name, this.details, this.selectedCategory, this.location);
   }
 }
