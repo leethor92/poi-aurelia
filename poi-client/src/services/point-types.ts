@@ -1,10 +1,9 @@
 export interface Point {
   name: string;
   details: string;
-  member: string;
   category: string;
   location: Location;
-  id: ''
+  _id: string;
 }
 
 export interface Review {
@@ -20,6 +19,14 @@ export interface User {
   email: string;
   password: string;
   _id: string;
+}
+
+export interface RawReview {
+  reviewName: string;
+  reviewDetails: string;
+  rating: string;
+  point: string;
+  member: string;
 }
 
 export interface Location {
