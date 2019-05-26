@@ -35,3 +35,5 @@ https://hopeful-snyder-1e5ef0.netlify.com/
 This application was built using Aurelia with Javascript & typescript. This application relies on preloaded information from a web-service API:
 https://github.com/leethor92/poi-island-webservice
 Please ensure API service is running on AWS to use this application.
+
+The below user has been preloaded "homer": { "firstName": "Homer", "lastName": "Simpson", "email": "homer@simpson.com", "password": "secret" }
