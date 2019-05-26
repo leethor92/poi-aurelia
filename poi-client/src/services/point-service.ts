@@ -18,7 +18,7 @@ export class PointService {
 
   constructor(private httpClient: HttpClient, private au: Aurelia, private router: Router, private ea: EventAggregator) {
     httpClient.configure(http => {
-      http.withBaseUrl('https://DESKTOP-TMDJO97:3000');
+      http.withBaseUrl('https://34.244.252.138:3000');
     });
     this.getPoints();
     this.getUsers();
