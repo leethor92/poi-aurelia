@@ -1,4 +1,4 @@
-import {Point, Review, User, Location} from "./point-types";
+import {Point, Review, User, Location, RawReview} from "./point-types";
 import { HttpClient } from 'aurelia-http-client';
 import { inject, Aurelia } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
@@ -10,19 +10,19 @@ import {UpdateMap} from "./messages";
 @inject(HttpClient, Aurelia, Router, EventAggregator)
 export class PointService {
   users: Map <string, User> = new Map();
+  usersById: Map<string, User> = new Map();
   points : Point[] = [];
   categoryTypes = ['North','South','East','West'];
   reviews: Review [] = [];
   ratingTypes = ['Bad','Ok','Good'];
 
-  usersById: Map<string, User> = new Map();
-
   constructor(private httpClient: HttpClient, private au: Aurelia, private router: Router, private ea: EventAggregator) {
     httpClient.configure(http => {
-      http.withBaseUrl('https://DESKTOP-TMDJO97:3000');
+      http.withBaseUrl('https://34.244.252.138:3000');
     });
     this.getPoints();
     this.getUsers();
+    this.getReviews();
   }
 
   async getPoints() {
@@ -40,12 +40,26 @@ export class PointService {
     });
   }
 
+  async getReviews() {
+    const response = await this.httpClient.get('/api/reviews');
+    const rawReviews: RawReview[] = await response.content;
+    rawReviews.forEach(rawReview => {
+      const review = {
+        reviewName: rawReview.reviewName,
+        reviewDetails : rawReview.reviewDetails,
+        rating : rawReview.rating,
+        point : this.points.find(point => rawReview.point == point._id),
+      }
+      this.reviews.push(review);
+    });
+  }
+
   async createPoint(name: string, details: string, category: string, location: Location) {
     const point = {
       name: name,
       details: details,
       category: category,
-      location: Location
+      location: Location,
     };
     const response = await this.httpClient.post('/api/points', point);
     const newPoint = await response.content;
@@ -60,6 +74,7 @@ export class PointService {
       rating: rating,
       point: point
     };
+    const response = await this.httpClient.post('/api/points/' + point._id + '/reviews', review);
     this.reviews.push(review);
   }
 
